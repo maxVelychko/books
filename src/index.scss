@@ -1,0 +1,16 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+html, body {
+  min-height: 100vh;
+  font-size: 16px;
+  color: #24292e;
+}
+
+body > #root {
+  min-height: inherit;
+}
