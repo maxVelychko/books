@@ -14,3 +14,11 @@ html, body {
 body > #root {
   min-height: inherit;
 }
+
+input[type=text] {
+  padding: 0.5rem;
+  outline: none;
+  font-size: inherit;
+  border: 1px solid #d1d5da;
+  border-radius: 0.25rem;
+}

@@ -1,0 +1,43 @@
+.list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.row {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 15rem;
+  margin: 1rem;
+  padding: 1rem;
+  border: 0.0625rem solid #e1e4e8;
+  border-radius: 0.5rem;
+}
+
+.bookImage {
+  width: 10rem;
+}
+
+.bookDescription {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-left: 1rem;
+  .generalText {
+    display: flex;
+    flex-direction: column;
+    .name {
+      font-weight: 600;
+    }
+    .genre {
+      color: #0066c0;
+      font-size: 0.8rem;
+    }
+    .name, .authorName, .genre {
+      padding-bottom: 0.5rem;
+    }
+  }
+  .publishedText {
+    font-size: 0.8rem;
+  }
+}
