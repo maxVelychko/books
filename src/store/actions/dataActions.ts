@@ -14,7 +14,7 @@ const fetchBooksFailed = (): AnyAction => ({
 });
 
 export const fetchBooks = (): ThunkAction<void, State, unknown, Action<string>> => (dispatch: Dispatch) => {
-  return fetch('/api/data.json')
+  return fetch('api/books')
     .then(response => response.json())
     .then(json => dispatch(fetchBooksSucceeded(json)))
     .catch(error => {
