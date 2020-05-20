@@ -4,8 +4,8 @@
   "description": "",
   "main": "dist/app.js",
   "scripts": {
-    "start": "tsc && node dist/app.js",
-    "dev": "nodemon src/app.ts"
+    "start": "tsc && node dist/index.js",
+    "dev": "nodemon src/index.ts"
   },
   "keywords": [],
   "author": "",
@@ -18,7 +18,8 @@
     "typescript": "^3.9.2"
   },
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "mongoose": "^5.9.15"
   },
   "nodemonConfig": {
     "watch": [
