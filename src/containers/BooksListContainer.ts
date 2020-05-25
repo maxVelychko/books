@@ -1,11 +1,12 @@
 import { connect } from 'react-redux';
 
 import BooksList from 'components/BooksList';
+import { fetchBooks } from 'store/actions/dataActions';
 import {
   getBooksSelector,
   getBooksLoadedSelector,
 } from 'store/selectors';
-import { State } from 'store/types';
+import { State, Dispatch } from 'store/types';
 
 import { StateProps } from './types';
 
@@ -14,4 +15,9 @@ const mapStateToProps = (state: State): StateProps => ({
   booksLoaded: getBooksLoadedSelector(state),
 });
 
-export default connect(mapStateToProps)(BooksList);
+const mapDispatchToProps = (dispatch: Dispatch): any => ({
+  // @ts-ignore
+  fetchBooks: (page: number) => dispatch(fetchBooks(page)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(BooksList);

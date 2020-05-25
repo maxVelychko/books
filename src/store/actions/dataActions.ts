@@ -13,8 +13,15 @@ const fetchBooksFailed = (): AnyAction => ({
   type: FETCH_BOOKS_FAILED,
 });
 
-export const fetchBooks = (): ThunkAction<void, State, unknown, Action<string>> => (dispatch: Dispatch) => {
-  return fetch('api/books')
+type AsyncAction = ThunkAction<void, State, unknown, Action<string>>;
+
+export const fetchBooks = (page: number): AsyncAction => (dispatch: Dispatch) => {
+  let url = 'api/books';
+  if (page) {
+    url += `?page=${page}`;
+  }
+
+  return fetch(url)
     .then(response => response.json())
     .then(json => dispatch(fetchBooksSucceeded(json)))
     .catch(error => {

@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-const Book = mongoose.model('Book', {
+const bookSchema = new mongoose.Schema({
   name: String,
   genre: String,
   date: String,
@@ -8,7 +8,9 @@ const Book = mongoose.model('Book', {
   author: {
     name: String,
     gender: String,
-  }
+  },
 });
+
+const Book = mongoose.model('Book', bookSchema);
 
 export default Book;

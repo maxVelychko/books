@@ -15,9 +15,14 @@ router.post('/api/books', async (req, res) => {
   }
 });
 
-router.get('/api/books', async (_req, res) => {
+const limit = 10;
+router.get('/api/books', async (req, res) => {
+  // @ts-ignore
+  const page = parseInt(req.query.page);
+  const skip = page > 1 ? (page - 1) * limit : 0;
+
   try {
-    const books = await Book.find({});
+    const books = await Book.find({}).skip(skip).limit(limit);
     res.send(books);
   } catch (error) {
     res.status(500).send(error);

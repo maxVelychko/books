@@ -5,10 +5,10 @@ import { ReactComponent as Logo } from 'logo.svg';
 
 import styles from './App.module.scss';
 
-function App() {
+const App = () => {
   const [inputValue, setInputValue] = useState('');
 
-  const handleChange = (e: ChangeEvent<any>) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     setInputValue(value);
   };

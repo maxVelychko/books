@@ -1,5 +1,6 @@
-import React, { FC } from 'react';
+import React, { FC, Fragment } from 'react';
 
+import Pagination from 'components/Pagination';
 import { months } from 'constants/date';
 
 import styles from './BooksList.module.scss';
@@ -10,8 +11,8 @@ const getFormattedDate = (dateStr: string) => {
   return `${months[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`;
 }
 
-const BooksList: FC<any> = ({ books }) => {
-  return (
+const BooksList: FC<any> = ({ books, fetchBooks }) => (
+  <Fragment>
     <ul className={styles.list}>
       {books.map((item: any) => {
         const { author, name, genre, date, image } = item;
@@ -36,7 +37,11 @@ const BooksList: FC<any> = ({ books }) => {
         )
       })}
     </ul>
-  )
-};
+    <Pagination
+      containerClassName={styles.paginationContainer}
+      loadData={fetchBooks}
+    />
+  </Fragment>
+);
 
 export default BooksList;
