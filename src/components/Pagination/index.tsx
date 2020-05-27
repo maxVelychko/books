@@ -1,20 +1,17 @@
-import React, { FC, useState } from 'react';
+import React, { FC } from 'react';
 import ReactPaginate from 'react-paginate';
 
+import { PaginationProps, OnPageChange } from './types';
 import styles from './Pagination.module.scss';
 
-const perPage = 10;
-
-const Pagination: FC<any> = ({ loadData, containerClassName }) => {
-  // const [data, setData] = useState([]);
-  // const [offset, setOffset] = useState(0);
-
-  const handlePageClick = (data: any) => {
-    let selected = data.selected;
-    let offset = Math.ceil(selected * perPage);
-
-    // setOffset(offset);
-    // loadData();
+const Pagination: FC<PaginationProps> = ({
+  containerClassName,
+  pagination,
+  loadData
+}) => {
+  const handlePageClick: OnPageChange = ({ selected }) => {
+    const page = selected + 1;
+    loadData(page);
   };
 
   return (
@@ -22,7 +19,7 @@ const Pagination: FC<any> = ({ loadData, containerClassName }) => {
       previousLabel="Previous"
       nextLabel="Next"
       breakLabel="..."
-      pageCount={perPage}
+      pageCount={pagination.pageCount}
       marginPagesDisplayed={2}
       pageRangeDisplayed={5}
       onPageChange={handlePageClick}

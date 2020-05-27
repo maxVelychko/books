@@ -3,7 +3,10 @@ import { AnyAction } from 'redux';
 import { FETCH_BOOKS_SUCCEEDED } from 'store/actions/actionsTypes';
 
 const initialState = {
-  books: [],
+  books: {
+    items: [],
+    pagination: {},
+  },
 }
 
 const dataReducer = (state = initialState, action: AnyAction) => {

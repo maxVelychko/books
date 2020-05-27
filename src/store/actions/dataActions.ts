@@ -1,22 +1,22 @@
-import { Action, AnyAction } from 'redux';
+import { Action, ActionCreator } from 'redux';
 import { ThunkAction } from 'redux-thunk';
 
 import { FETCH_BOOKS_SUCCEEDED, FETCH_BOOKS_FAILED } from './actionsTypes';
 import { State, Books, Dispatch } from 'store/types';
 
-const fetchBooksSucceeded = (books: Books): AnyAction => ({
+const fetchBooksSucceeded: ActionCreator<Action> = (books: Books) => ({
   type: FETCH_BOOKS_SUCCEEDED,
   books,
 });
 
-const fetchBooksFailed = (): AnyAction => ({
+const fetchBooksFailed: ActionCreator<Action> = () => ({
   type: FETCH_BOOKS_FAILED,
 });
 
-type AsyncAction = ThunkAction<void, State, unknown, Action<string>>;
+type AsyncAction = ThunkAction<void, State, unknown, Action>;
 
-export const fetchBooks = (page: number): AsyncAction => (dispatch: Dispatch) => {
-  let url = 'api/books';
+export const fetchBooks: ActionCreator<AsyncAction> = (page: number) => (dispatch: Dispatch) => {
+  let url = `api/books`;
   if (page) {
     url += `?page=${page}`;
   }

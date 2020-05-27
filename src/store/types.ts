@@ -13,7 +13,14 @@ interface Book {
   }
 }
 
-export type Books = Book[];
+export interface Pagination {
+  pageCount: number;
+}
+
+export type Books = {
+  items: Book[];
+  pagination: Pagination;
+};
 
 interface Data {
   books: Books;

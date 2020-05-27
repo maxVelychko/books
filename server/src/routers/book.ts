@@ -22,8 +22,15 @@ router.get('/api/books', async (req, res) => {
   const skip = page > 1 ? (page - 1) * limit : 0;
 
   try {
+    const numOfBooks = await Book.estimatedDocumentCount();
     const books = await Book.find({}).skip(skip).limit(limit);
-    res.send(books);
+    
+    res.send({
+      items: books,
+      pagination: {
+        pageCount: Math.ceil(numOfBooks / limit)
+      }
+    });
   } catch (error) {
     res.status(500).send(error);
   }

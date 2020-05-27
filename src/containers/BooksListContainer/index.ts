@@ -8,16 +8,15 @@ import {
 } from 'store/selectors';
 import { State, Dispatch } from 'store/types';
 
-import { StateProps } from './types';
+import { StateProps, DispatchProps } from './types';
 
 const mapStateToProps = (state: State): StateProps => ({
   books: getBooksSelector(state),
   booksLoaded: getBooksLoadedSelector(state),
 });
 
-const mapDispatchToProps = (dispatch: Dispatch): any => ({
-  // @ts-ignore
-  fetchBooks: (page: number) => dispatch(fetchBooks(page)),
+const mapDispatchToProps = (dispatch: Dispatch): DispatchProps => ({
+  fetchBooks: (page: number) => dispatch<any>(fetchBooks(page)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(BooksList);
