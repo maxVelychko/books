@@ -1,5 +1,5 @@
-import { StateProps, DispatchProps } from 'containers/BooksListContainer/types';
+import { Book } from 'store/types';
 
-type BooksListProps = StateProps & DispatchProps;
-
-export default BooksListProps;
+export default interface BooksListProps {
+  items: Book[];
+}

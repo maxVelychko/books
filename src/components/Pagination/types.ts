@@ -1,9 +1,12 @@
-import { Pagination } from 'store/types';
+interface Pagination {
+  selectedPage: number;
+}
 
 export interface PaginationProps {
   containerClassName: string;
+  pageCount: number;
   pagination: Pagination;
-  loadData: (page: number) => void;
+  setPagination: (selectedPage: number) => void;
 }
 
 export type OnPageChange = (selectedItem: { selected: number }) => void;

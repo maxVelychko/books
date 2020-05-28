@@ -1,4 +1,5 @@
 import { Books } from 'store/types';
+import { QueryParams } from 'store/actions/types';
 
 export interface StateProps {
   books: Books;
@@ -6,5 +7,5 @@ export interface StateProps {
 }
 
 export interface DispatchProps {
-  fetchBooks: (page: number) => void;
+  fetchBooks: (params: QueryParams) => void;
 }

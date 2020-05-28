@@ -2,7 +2,7 @@ import { Dispatch as ReduxDispatch } from 'redux';
 
 export type Dispatch = ReduxDispatch;
 
-interface Book {
+export interface Book {
   name: string;
   genre: string;
   date: string;
@@ -13,13 +13,9 @@ interface Book {
   }
 }
 
-export interface Pagination {
-  pageCount: number;
-}
-
 export type Books = {
   items: Book[];
-  pagination: Pagination;
+  pageCount: number;
 };
 
 interface Data {

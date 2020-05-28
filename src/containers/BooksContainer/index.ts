@@ -1,11 +1,8 @@
 import { connect } from 'react-redux';
 
-import BooksList from 'components/BooksList';
+import Books from 'components/Books';
 import { fetchBooks } from 'store/actions/dataActions';
-import {
-  getBooksSelector,
-  getBooksLoadedSelector,
-} from 'store/selectors';
+import { getBooksSelector, getBooksLoadedSelector } from 'store/selectors';
 import { State, Dispatch } from 'store/types';
 
 import { StateProps, DispatchProps } from './types';
@@ -16,7 +13,8 @@ const mapStateToProps = (state: State): StateProps => ({
 });
 
 const mapDispatchToProps = (dispatch: Dispatch): DispatchProps => ({
-  fetchBooks: (page: number) => dispatch<any>(fetchBooks(page)),
+  fetchBooks: params => dispatch<any>(fetchBooks(params)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(BooksList);
+export default connect(mapStateToProps, mapDispatchToProps)(Books);
+

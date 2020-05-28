@@ -17,19 +17,25 @@ router.post('/api/books', async (req, res) => {
 
 const limit = 10;
 router.get('/api/books', async (req, res) => {
+  const { page, name } = req.query;
+  const filter: any = {};
+
   // @ts-ignore
-  const page = parseInt(req.query.page);
-  const skip = page > 1 ? (page - 1) * limit : 0;
+  const pageFormatted = parseInt(page);
+  const skip = pageFormatted > 1 ? (pageFormatted - 1) * limit : 0;
+
+  if (name) {
+    // @ts-ignore
+    filter.name = new RegExp(name, 'i');
+  }
 
   try {
-    const numOfBooks = await Book.estimatedDocumentCount();
-    const books = await Book.find({}).skip(skip).limit(limit);
-    
+    const numOfBooks = await Book.find(filter).countDocuments();
+    const books = await Book.find(filter).skip(skip).limit(limit);
+
     res.send({
       items: books,
-      pagination: {
-        pageCount: Math.ceil(numOfBooks / limit)
-      }
+      pageCount: Math.ceil(numOfBooks / limit)
     });
   } catch (error) {
     res.status(500).send(error);

@@ -1,24 +1,21 @@
-import { Action, ActionCreator } from 'redux';
-import { ThunkAction } from 'redux-thunk';
-
 import { FETCH_BOOKS_SUCCEEDED, FETCH_BOOKS_FAILED } from './actionsTypes';
-import { State, Books, Dispatch } from 'store/types';
+import { Action, AsyncAction, QueryParams } from 'store/actions/types'
+import { Books } from 'store/types';
 
-const fetchBooksSucceeded: ActionCreator<Action> = (books: Books) => ({
+const fetchBooksSucceeded: Action = (books: Books) => ({
   type: FETCH_BOOKS_SUCCEEDED,
   books,
 });
 
-const fetchBooksFailed: ActionCreator<Action> = () => ({
+const fetchBooksFailed: Action = () => ({
   type: FETCH_BOOKS_FAILED,
 });
 
-type AsyncAction = ThunkAction<void, State, unknown, Action>;
-
-export const fetchBooks: ActionCreator<AsyncAction> = (page: number) => (dispatch: Dispatch) => {
-  let url = `api/books`;
-  if (page) {
-    url += `?page=${page}`;
+export const fetchBooks = (params?: QueryParams): AsyncAction => dispatch => {
+  let url = 'api/books';
+  if (params) {
+    const { page = '', name = '' } = params;
+    url += `?page=${page}&name=${name}`;
   }
 
   return fetch(url)
@@ -28,4 +25,4 @@ export const fetchBooks: ActionCreator<AsyncAction> = (page: number) => (dispatc
       dispatch(fetchBooksFailed());
       console.log(error);
     });
-}
+};

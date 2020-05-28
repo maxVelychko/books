@@ -6,12 +6,12 @@ import styles from './Pagination.module.scss';
 
 const Pagination: FC<PaginationProps> = ({
   containerClassName,
+  pageCount,
   pagination,
-  loadData
+  setPagination,
 }) => {
   const handlePageClick: OnPageChange = ({ selected }) => {
-    const page = selected + 1;
-    loadData(page);
+    setPagination(selected);
   };
 
   return (
@@ -19,7 +19,8 @@ const Pagination: FC<PaginationProps> = ({
       previousLabel="Previous"
       nextLabel="Next"
       breakLabel="..."
-      pageCount={pagination.pageCount}
+      forcePage={pagination.selectedPage}
+      pageCount={pageCount}
       marginPagesDisplayed={2}
       pageRangeDisplayed={5}
       onPageChange={handlePageClick}
