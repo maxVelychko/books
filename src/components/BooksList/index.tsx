@@ -22,7 +22,7 @@ const BooksList: FC<BooksListProps> = ({
       return (
         <li
           key={name + date}
-          className={styles.row}
+          className={styles.listItem}
         >
           <img className={styles.bookImage} src={image} alt="Book" />
           <div className={styles.bookDescription}>

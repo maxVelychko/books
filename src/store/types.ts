@@ -15,6 +15,7 @@ export interface Book {
 
 export type Books = {
   items: Book[];
+  genres: string[];
   pageCount: number;
 };
 

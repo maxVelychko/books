@@ -5,7 +5,6 @@ import { PaginationProps, OnPageChange } from './types';
 import styles from './Pagination.module.scss';
 
 const Pagination: FC<PaginationProps> = ({
-  containerClassName,
   pageCount,
   pagination,
   setPagination,
@@ -24,7 +23,7 @@ const Pagination: FC<PaginationProps> = ({
       marginPagesDisplayed={2}
       pageRangeDisplayed={5}
       onPageChange={handlePageClick}
-      containerClassName={`${containerClassName} ${styles.container}`}
+      containerClassName={styles.container}
       pageLinkClassName={styles.pageLink}
       previousLinkClassName={styles.previousLink}
       nextLinkClassName={styles.nextLink}

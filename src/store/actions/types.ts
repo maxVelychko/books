@@ -7,7 +7,8 @@ export type Action = ActionCreator<AnyAction>;
 
 export type AsyncAction = ThunkAction<void, State, unknown, AnyAction>;
 
-export interface QueryParams {
+export interface FetchBooksParams {
   page?: number;
   name?: string;
+  genre?: string;
 };

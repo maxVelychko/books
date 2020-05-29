@@ -5,6 +5,7 @@ import { FETCH_BOOKS_SUCCEEDED } from 'store/actions/actionsTypes';
 const initialState = {
   books: {
     items: [],
+    genres: [],
     pageCount: 0,
   },
 }

@@ -1,28 +1,30 @@
 .list {
-  display: flex;
-  flex-wrap: wrap;
+  // display: flex;
+  // flex-wrap: wrap;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+  grid-gap: 1rem;
 }
 
-.row {
+.listItem {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 15rem;
-  margin: 1rem;
   padding: 1rem;
   border: 0.0625rem solid #e1e4e8;
   border-radius: 0.5rem;
 }
 
 .bookImage {
-  width: 10rem;
+  max-width: 100%;
 }
 
 .bookDescription {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  margin-left: 1rem;
+  text-align: center;
   .generalText {
     display: flex;
     flex-direction: column;

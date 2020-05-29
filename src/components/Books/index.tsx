@@ -1,26 +1,28 @@
 import React, { FC, Fragment, useState } from 'react';
 
-import Filters from 'components/Filters';
+import BooksFilters from 'components/BooksFilters';
 import BooksList from 'components/BooksList';
 import Pagination from 'components/Pagination';
+import { initialSelectOption } from 'constants/filters';
+import { Filters } from 'types/filters';
 
-import { BooksProps, FiltersParams } from './types';
-import styles from './Books.module.scss';
+import BooksProps from './types';
 
 const Books: FC<BooksProps> = ({
   books,
   booksLoaded,
   fetchBooks,
 }) => {
-  const [filters, setFilters] = useState({
+  const [filterValues, setFilterValues] = useState({
     name: '',
+    genre: initialSelectOption,
   });
   const [pagination, setPagination] = useState({
     selectedPage: 0,
   });
 
-  const handleSetFilters = (params: FiltersParams) => {
-    setFilters(params);
+  const handleSetValues = (params: Filters) => {
+    setFilterValues(params);
     fetchBooks(params);
     setPagination({ selectedPage: 0 });
   };
@@ -31,22 +33,23 @@ const Books: FC<BooksProps> = ({
     const page = selectedPage + 1;
     fetchBooks({
       page,
-      name: filters.name,
+      name: filterValues.name,
     });
   };
 
-  const { items, pageCount } = books;
+  const { items, genres, pageCount } = books;
+  const selectOptions = [initialSelectOption].concat(genres);
 
   return (
     <Fragment>
-      <Filters
-        filters={filters}
-        setFilters={handleSetFilters}
+      <BooksFilters
+        values={filterValues}
+        selectOptions={selectOptions}
+        setValues={handleSetValues}
       />
       {/* ToDo, apply booksLoaded prop */}
       <BooksList items={items} />
       <Pagination
-        containerClassName={styles.paginationContainer}
         pageCount={pageCount}
         pagination={pagination}
         setPagination={handleSetPagination}

@@ -3,7 +3,6 @@ interface Pagination {
 }
 
 export interface PaginationProps {
-  containerClassName: string;
   pageCount: number;
   pagination: Pagination;
   setPagination: (selectedPage: number) => void;
