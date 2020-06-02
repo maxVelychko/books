@@ -13,7 +13,7 @@ const mapStateToProps = (state: State): StateProps => ({
 });
 
 const mapDispatchToProps = (dispatch: Dispatch): DispatchProps => ({
-  fetchBooks: params => dispatch<any>(fetchBooks(params)),
+  fetchBooks: (params, hasDelay) => dispatch<any>(fetchBooks(params, hasDelay)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Books);

@@ -7,5 +7,5 @@ export interface StateProps {
 }
 
 export interface DispatchProps {
-  fetchBooks: (params: FetchBooksParams) => void;
+  fetchBooks: (params: FetchBooksParams, hasDelay?: boolean) => void;
 }

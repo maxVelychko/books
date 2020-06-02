@@ -11,10 +11,11 @@ const BooksFilters = ({
   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
 
+    const isNameChanged = name === 'name';
     setValues({
       ...values,
       [name]: value,
-    });
+    }, isNameChanged);
   };
 
   return (
@@ -39,6 +40,6 @@ const BooksFilters = ({
       </select>
     </div>
   );
-}
+};
 
 export default BooksFilters;

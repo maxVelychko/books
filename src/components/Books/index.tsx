@@ -21,9 +21,9 @@ const Books: FC<BooksProps> = ({
     selectedPage: 0,
   });
 
-  const handleSetValues = (params: Filters) => {
+  const handleSetValues = (params: Filters, isNameChanged: boolean) => {
     setFilterValues(params);
-    fetchBooks(params);
+    fetchBooks(params, isNameChanged);
     setPagination({ selectedPage: 0 });
   };
 

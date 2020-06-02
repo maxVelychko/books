@@ -1,16 +1,9 @@
 import React, { FC } from 'react';
 
-import { months } from 'constants/date';
+import getFormattedDate from 'helpers/getFormattedDate';
 
 import BooksListProps from './types';
 import styles from './BooksList.module.scss';
-
-// ToDo: extract
-const getFormattedDate = (dateStr: string) => {
-  const date = new Date(dateStr);
-  
-  return `${months[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`;
-};
 
 const BooksList: FC<BooksListProps> = ({
   items,
