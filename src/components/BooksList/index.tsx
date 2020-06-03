@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 
+import BookImage from 'components/BookImage';
 import getFormattedDate from 'helpers/getFormattedDate';
 
 import BooksListProps from './types';
@@ -17,7 +18,7 @@ const BooksList: FC<BooksListProps> = ({
           key={name + date}
           className={styles.listItem}
         >
-          <img className={styles.bookImage} src={image} alt="Book" />
+          <BookImage src={image} alt="Book" />
           <div className={styles.bookDescription}>
             <div className={styles.generalText}>
               <span className={styles.name}>{name}</span>
