@@ -1,11 +1,13 @@
 import React, { FC, Fragment, useState } from 'react';
 
+import Loader from 'components/Loader';
 import BooksFilters from 'components/BooksFilters';
 import BooksList from 'components/BooksList';
 import Pagination from 'components/Pagination';
 import { initialSelectOption } from 'constants/filters';
 import { Filters } from 'types/filters';
 
+import styles from './Books.module.scss';
 import BooksProps from './types';
 
 const Books: FC<BooksProps> = ({
@@ -40,6 +42,14 @@ const Books: FC<BooksProps> = ({
   const { items, genres, pageCount } = books;
   const selectOptions = [initialSelectOption].concat(genres);
 
+  if (!booksLoaded) {
+    return (
+      <div className={styles.loaderContainer}>
+        <Loader message="Books are loading..." />
+      </div>
+    );
+  }
+
   return (
     <Fragment>
       <BooksFilters
@@ -47,7 +57,6 @@ const Books: FC<BooksProps> = ({
         selectOptions={selectOptions}
         setValues={handleSetValues}
       />
-      {/* ToDo, apply booksLoaded prop */}
       <BooksList items={items} />
       <Pagination
         pageCount={pageCount}

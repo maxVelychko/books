@@ -1,3 +1,13 @@
+.noResults {
+  padding: 1rem 0.5rem;
+  border: 0.0625rem solid #e1e4e8;
+  border-radius: 0.5rem;
+}
+
+.boldText {
+  font-weight: 600;
+}
+
 .list {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr));
@@ -13,25 +23,40 @@
   border-radius: 0.5rem;
 }
 
-.bookDescription {
+.descriptionContainer {
+  width: 100%;
+  margin-top: 1rem;
   display: flex;
   flex-direction: column;
   text-align: center;
-  .generalText {
-    display: flex;
-    flex-direction: column;
-    .name {
-      font-weight: 600;
-    }
-    .genre {
-      color: #0066c0;
-      font-size: 0.8rem;
-    }
-    .name, .authorName, .genre {
-      padding-bottom: 0.5rem;
-    }
-  }
-  .publishedText {
-    font-size: 0.8rem;
-  }
+}
+
+.description {
+  display: flex;
+  flex-direction: column;
+}
+
+.name {
+  display: block;
+  font-weight: 600;
+}
+
+.genre {
+  text-overflow: ellipsis;
+  color: #0066c0;
+  font-size: 0.8rem;
+}
+
+.name, .authorName, .genre {
+  padding-bottom: 0.5rem;
+}
+
+.name, .authorName, .publishedText {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.publishedText {
+  font-size: 0.8rem;
 }

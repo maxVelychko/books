@@ -26,6 +26,7 @@ const BooksFilters = ({
         name="name"
         value={values.name}
         onChange={handleChange}
+        autoComplete="off"
         placeholder="Find a book"
       />
       <select
