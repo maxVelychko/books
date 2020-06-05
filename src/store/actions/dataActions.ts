@@ -1,6 +1,6 @@
 import { FETCH_BOOKS_SUCCEEDED, FETCH_BOOKS_FAILED } from './actionsTypes';
 import { Action, AsyncAction, FetchBooksParams } from 'store/actions/types'
-import { Books, Dispatch } from 'store/types';
+import { Books } from 'store/types';
 import { initialSelectOption } from 'constants/filters';
 import delayFuncExecution from 'helpers/delayFuncExecution';
 
