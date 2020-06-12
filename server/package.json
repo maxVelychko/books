@@ -3,7 +3,7 @@
   "main": "dist/app.js",
   "scripts": {
     "start": "node dist/index.js",
-    "dev": "nodemon src/index.ts",
+    "dev": "env-cmd -f ./config/.env.development nodemon src/index.ts",
     "tsc": "tsc"
   },
   "nodemonConfig": {

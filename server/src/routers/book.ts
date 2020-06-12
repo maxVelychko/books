@@ -15,7 +15,7 @@ router.post('/api/books', async (req, res) => {
   }
 });
 
-const limit = 10;
+const limit = 20;
 router.get('/api/books', async (req, res) => {
   const { page, name, genre } = req.query;
 

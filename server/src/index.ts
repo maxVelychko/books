@@ -1,17 +1,17 @@
 import express from 'express';
 import path from 'path';
 
-// import connectToDB from './db/mongoose';
-// import bookRouter from './routers/book';
+import connectToDB from './db/mongoose';
+import bookRouter from './routers/book';
 
-const port = process.env.PORT || 3001;
+const port = process.env.PORT;
 
 const app = express();
-// connectToDB();
+connectToDB();
 
 app.use(express.static(path.join(__dirname, '../../client/build')));
-// app.use(express.json());
-// app.use(bookRouter);
+app.use(express.json());
+app.use(bookRouter);
 
 // @ts-ignore
 app.listen(port, error => {
