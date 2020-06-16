@@ -16,4 +16,4 @@ yarn run dev
 3. Go to [http://localhost:3000](http://localhost:3000) to see the app in browser.
 
 ## Try this out
-The app link on the internet [books](https://mv-books.herokuapp.com/).
+The app link on the internet - [books](https://mv-books.herokuapp.com/).
