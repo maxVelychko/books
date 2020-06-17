@@ -21,11 +21,11 @@ const BooksList: FC<BooksListProps> = ({
   return (
     <ul className={styles.list}>
       {items.map((item: any) => {
-        const { author, name, genre, date, image } = item;
+        const { _id, author, name, genre, date, image } = item;
 
         return (
           <li
-            key={name + date}
+            key={_id}
             className={styles.listItem}
           >
             <BookImage src={image} alt="Book" />
